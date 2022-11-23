@@ -11,20 +11,27 @@ public class LinkedListDeque<T> {
         }
     }
 
-    /** the first item should be sentinel.next(if it exists)*/
+    /**
+     * the first item should be sentinel.next(if it exists)
+     */
     private StuffNode sentinel;
     private StuffNode last;
     private T sen; //A T Stuff made for creating sentinel
     private int size;
 
-    /**Create a empty list.*/
-    public  LinkedListDeque() {
+    /**
+     * Create a empty list.
+     */
+    public LinkedListDeque() {
         sentinel = new StuffNode(null, sen, null);
         sentinel.rest = new StuffNode(sentinel, sen, null);
         last = sentinel.rest;
         size = 0;
     }
-    /**Create a one-element list.*/
+
+    /**
+     * Create a one-element list.
+     */
     public LinkedListDeque(T item) {
         sentinel = new StuffNode(null, sen, null);
         sentinel.rest = new StuffNode(sentinel, sen, null);
@@ -48,12 +55,16 @@ public class LinkedListDeque<T> {
         return size == 0;
     }
 
-    /** Return the size of the list.*/
+    /**
+     * Return the size of the list.
+     */
     public int size() {
         return size;
     }
 
-    /**Print the list*/
+    /**
+     * Print the list
+     */
     public void printDeque() {
         StuffNode n = sentinel.rest;
         for (int i = 0; i < size; i += 1) {
@@ -63,7 +74,9 @@ public class LinkedListDeque<T> {
         System.out.print("\n");
     }
 
-    /** Removes and returns the item at the front of the deque.*/
+    /**
+     * Removes and returns the item at the front of the deque.
+     */
     public T removeFirst() {
         size -= 1;
         sentinel.rest = sentinel.rest.rest;
@@ -93,11 +106,11 @@ public class LinkedListDeque<T> {
     }
 
 
-    private T RecurHelper(StuffNode fnode, int index) {
+    private T recurhelper(StuffNode fnode, int index) {
         if (index == 0) {
             return fnode.first;
         } else {
-            return RecurHelper(fnode.rest, index - 1);
+            return recurhelper(fnode.rest, index - 1);
         }
     }
 
@@ -105,7 +118,7 @@ public class LinkedListDeque<T> {
         if (index >= size) {
             return null;
         } else {
-            return RecurHelper(sentinel.rest, index);
+            return recurhelper(sentinel.rest, index);
         }
     }
 
