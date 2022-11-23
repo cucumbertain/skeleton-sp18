@@ -1,10 +1,10 @@
-public class LinkedListDeque<TypeG> {
+public class LinkedListDeque<T> {
     private class StuffNode {
-        public TypeG first;
-        public StuffNode rest;
-        public StuffNode prev;
+        private T first;
+        private StuffNode rest;
+        private StuffNode prev;
 
-        public StuffNode(StuffNode previous0, TypeG first0, StuffNode rest0) {
+        public StuffNode(StuffNode previous0, T first0, StuffNode rest0) {
             first = first0;
             rest = rest0;
             prev = previous0;
@@ -14,7 +14,7 @@ public class LinkedListDeque<TypeG> {
     /** the first item should be sentinel.next(if it exists)*/
     private StuffNode sentinel;
     private StuffNode last;
-    private TypeG sen; //A TypeG Stuff made for creating sentinel
+    private T sen; //A T Stuff made for creating sentinel
     private int size;
 
     /**Create a empty list.*/
@@ -25,20 +25,20 @@ public class LinkedListDeque<TypeG> {
         size = 0;
     }
     /**Create a one-element list.*/
-    public LinkedListDeque(TypeG item) {
+    public LinkedListDeque(T item) {
         sentinel = new StuffNode(null, sen, null);
         sentinel.rest = new StuffNode(sentinel, sen, null);
         sentinel.rest = new StuffNode(sentinel, item, sentinel.rest);
         size = 1;
     }
 
-    public void addFirst(TypeG item) {
+    public void addFirst(T item) {
         sentinel.rest = new StuffNode(sentinel, item, sentinel.rest);
         sentinel.rest.rest.prev = sentinel.rest;
         size += 1;
     }
 
-    public void addLast(TypeG item) {
+    public void addLast(T item) {
         last.prev = new StuffNode(last.prev, item, last);
         last.prev.prev.rest = last.prev;
         size += 1;
@@ -63,22 +63,22 @@ public class LinkedListDeque<TypeG> {
         System.out.print("\n");
     }
 
-    /** Removes and returns the item at the front of the deque. If no such item exists, returns null.*/
-    public TypeG removeFirst() {
+    /** Removes and returns the item at the front of the deque.*/
+    public T removeFirst() {
         size -= 1;
         sentinel.rest = sentinel.rest.rest;
         sentinel.rest.prev = sentinel;
         return sentinel.rest.first;
     }
 
-    public TypeG removeLast() {
+    public T removeLast() {
         size -= 1;
         last.prev = last.prev.prev;
         last.prev.rest = last;
         return last.prev.first;
     }
 
-    public TypeG get(int index) {
+    public T get(int index) {
         if (index >= size) {
             return null;
         } else {
@@ -93,22 +93,20 @@ public class LinkedListDeque<TypeG> {
     }
 
 
-    private TypeG Recur_helper(StuffNode fnode, int index) {
+    private T RecurHelper(StuffNode fnode, int index) {
         if (index == 0) {
             return fnode.first;
         } else {
-            return Recur_helper(fnode.rest, index -1);
+            return RecurHelper(fnode.rest, index - 1);
         }
     }
 
-    public TypeG getRecursive(int index) {
+    public T getRecursive(int index) {
         if (index >= size) {
             return null;
         } else {
-            return Recur_helper(sentinel.rest, index);
-
+            return RecurHelper(sentinel.rest, index);
         }
-
     }
 
 
@@ -117,9 +115,6 @@ public class LinkedListDeque<TypeG> {
         s1.addFirst("jack");
         s1.addFirst("rose");
         s1.addLast("the last one");
-        System.out.println(s1.last.prev.prev.first);
-
-
     }
 
 }
