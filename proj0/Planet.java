@@ -6,7 +6,7 @@ public class Planet {
     public double mass;
     public String imgFileName;
 
-    public static final double G = 6.67e-11;
+    private static final double G = 6.67e-11;
 
     /**Create a planet using 6 parameters */
     public Planet(double xPos, double yPos, double xVel, double yVel, double mas, String img) {

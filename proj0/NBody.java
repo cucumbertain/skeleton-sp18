@@ -32,8 +32,21 @@ public class NBody {
         String filename = args[2];
 
         double Rad = readRadius(filename);
-        Planet[] p = readPlanets(filename);
-        System.out.println(Rad);
+        Planet[] p = readPlanets(filename); 
+
+        StdDraw.setScale(-100, 100);
+
+		/* Clears the drawing window. */
+		StdDraw.clear();
+
+		/* Stamps three copies of advice.png in a triangular pattern. */
+		StdDraw.picture(0, 75, imageToDraw);
+		StdDraw.picture(-75, -75, imageToDraw);
+		StdDraw.picture(75, -75, imageToDraw);
+
+		/* Shows the drawing to the screen, and waits 2000 milliseconds. */
+		StdDraw.show();
+		StdDraw.pause(2000);		
     }
 
 }
