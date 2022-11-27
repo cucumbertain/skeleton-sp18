@@ -108,13 +108,13 @@ public class IntList {
 
 
 
-    public static void reverse(IntList A) {
+    public static IntList reverse(IntList A) {
         IntList L = new IntList();
         IntList B = A;
         L = null;
 
         if (A == null) {
-            return;
+            return null;
         }
 
         while (A != null) {
@@ -128,6 +128,7 @@ public class IntList {
             B = B.rest;
             B.first = L.first;
         }
+        return B;
 
     }
 
