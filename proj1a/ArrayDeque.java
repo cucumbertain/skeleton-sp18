@@ -88,6 +88,19 @@ public class ArrayDeque<T> {
         return removeditem;
     }
 
+    public T removeFirst() {
+        if (items.length > 8 && size * 4 == items.length) {
+            items = divideSizeArray(items);
+        }
+        T removeditem = items[calIndex(nextFirst + 1)];
+        items[calIndex(nextFirst + 1)] = null;
+        nextFirst = calIndex(nextFirst + 1);
+        size -= 1;
+        return removeditem;
+    }
+
+
+
     /** Returns the item from the back of the list. */
     public T getLast() {
         return items[calIndex(nextLast - 1)];

@@ -29,15 +29,14 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    /**
-     * Create a one-element list.
-     */
+    /* Create a one-element list.
     public LinkedListDeque(T item) {
         sentinel = new StuffNode(null, sen, null);
         sentinel.rest = new StuffNode(sentinel, sen, null);
         sentinel.rest = new StuffNode(sentinel, item, sentinel.rest);
         size = 1;
     }
+    */
 
     public void addFirst(T item) {
         sentinel.rest = new StuffNode(sentinel, item, sentinel.rest);
@@ -123,11 +122,5 @@ public class LinkedListDeque<T> {
     }
 
 
-    public static void main(String[] args) {
-        LinkedListDeque<String> s1 = new LinkedListDeque<>();
-        s1.addFirst("jack");
-        s1.addFirst("rose");
-        s1.addLast("the last one");
-    }
 
 }

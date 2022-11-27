@@ -58,6 +58,19 @@ public class TestArrayDeque {
     }
 
     @Test
+    public void testRemoveFirst() {
+        ArrayDeque<Integer> A = new ArrayDeque();
+        A.addLast(1);
+        A.addLast(2);
+        A.addFirst(3);
+        A.removeFirst();
+        int x = A.get(0);
+        assertEquals(1, x);
+    }
+
+
+
+    @Test
     public void testGet() {
         ArrayDeque<Integer> A = new ArrayDeque();
         for (int i = 0; i < 4; i += 1) {
