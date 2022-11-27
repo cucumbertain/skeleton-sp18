@@ -23,8 +23,8 @@ public class LinkedListDeque<T> {
      */
     public LinkedListDeque() {
         sentinel = new StuffNode(null, sen, null);
-        sentinel.rest = new StuffNode(sentinel, null, sentinel);
-        sentinel.prev = sentinel.rest;
+        sentinel.rest = sentinel;
+        sentinel.prev = sentinel;
         size = 0;
     }
 

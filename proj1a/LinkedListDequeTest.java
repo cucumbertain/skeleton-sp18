@@ -90,8 +90,11 @@ public class LinkedListDequeTest {
         lld1.addLast(8);
         lld1.addFirst(9);
 
-        //lld1.printDeque();
-        //System.out.print(lld1.getRecursive(0));
+        LinkedListDeque<Integer> lld2 = new LinkedListDeque<Integer>();
+        lld2.addFirst(2);
+        lld2.addFirst(3);
+        int x = lld2.removeLast();
+        System.out.println(x);
 
     }
 
