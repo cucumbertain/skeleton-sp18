@@ -31,7 +31,7 @@ public class ArrayDeque<T> {
     private T[] divideSizeArray(T[] oItems) {
         T[] a = (T[]) new Object[oItems.length / 2];
         if (calIndex(nextLast - 1) >= size - 1) {
-            System.arraycopy(oItems, calIndex(nextLast) - size + 1, a, 0, size);
+            System.arraycopy(oItems, calIndex(nextFirst + 1), a, 0, size);
         } else {
             System.arraycopy(oItems, nextFirst + 1, a, 0, oItems.length - nextFirst - 1);
             System.arraycopy(oItems, 0, a, oItems.length - nextFirst - 1, nextLast);
@@ -78,6 +78,9 @@ public class ArrayDeque<T> {
     /** Deletes item from back of the list and
      * returns deleted item. */
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         if (items.length > 8 && size * 4 == items.length) {
             items = divideSizeArray(items);
         }
@@ -89,6 +92,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
         if (items.length > 8 && size * 4 == items.length) {
             items = divideSizeArray(items);
         }
@@ -101,10 +107,11 @@ public class ArrayDeque<T> {
 
 
 
-    /** Returns the item from the back of the list. */
+    /* Returns the item from the back of the list.
     public T getLast() {
         return items[calIndex(nextLast - 1)];
     }
+    */
 
     /** Gets the ith item in the list (0 is the front). */
     public T get(int i) {

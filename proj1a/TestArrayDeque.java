@@ -80,15 +80,6 @@ public class TestArrayDeque {
         assertEquals(x, 3);
     }
 
-    @Test
-    public void testGetLast() {
-        ArrayDeque<Integer> A = new ArrayDeque();
-        for (int i = 0; i < 4; i += 1) {
-            A.addLast(i);
-        }
-        int x = A.getLast();
-        assertEquals(x, 3);
-    }
 
     @Test
     public void testSize() {
